@@ -56,7 +56,8 @@ export const Main = styled.main`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    max-width: 90%;
+    background-color: #fff;
+    width: 90%;
     gap: 2rem;
   }
 `

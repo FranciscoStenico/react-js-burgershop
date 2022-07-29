@@ -23,7 +23,13 @@ export const List = styled.ul`
     border-radius: 20px;
   }
 
+  h1 {
+    color: var(--color-grey-300);
+    font-size: 2rem;
+  }
+
   @media (min-width: 769px) {
+    align-items: flex-start;
     width: 70%;
     height: 36rem;
     flex-wrap: wrap;

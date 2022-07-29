@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const SubmitButton = styled.div`
+export const SubmitButton = styled.button`
+  border: none;
+  outline: none;
   background-color: var(--color-primary);
   font-weight: 600;
   padding: 0.4rem 0.8rem;

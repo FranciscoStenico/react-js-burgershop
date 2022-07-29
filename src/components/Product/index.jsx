@@ -1,11 +1,16 @@
 import Button from "../Button";
 import { ProductCard, CardInfos } from "./styles";
 
-function Product({ render, setCart }) {
+function Product({ render, cart, setCart }) {
+  function handleAdd() {
+    setCart([...cart, render])
+  }
+
   const currency = render.price.toLocaleString("pt-br", {
     style: "currency",
     currency: "BRL",
   });
+
   return (
     <ProductCard>
       <figure>
@@ -15,7 +20,7 @@ function Product({ render, setCart }) {
         <h3>{render.name}</h3>
         <p>{render.category}</p>
         <span>{currency}</span>
-        <Button type="submit" setCart={setCart}>
+        <Button handler={handleAdd} type="submit">
           Adicionar
         </Button>
       </CardInfos>

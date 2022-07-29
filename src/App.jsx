@@ -9,7 +9,7 @@ import Cart from "./components/Cart";
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState(["la"]);
+  const [cartProducts, setCartProducts] = useState([]);
   const [listRender, setListRender] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function App() {
         <h1>
           <span>Burguer </span>Kenzie
         </h1>
-        <Formulary setRender={setListRender} />
+        <Formulary list={products} setRender={setListRender} />
       </Header>
       <Main>
         <ProductList
@@ -37,7 +37,7 @@ function App() {
           cart={cartProducts}
           setCart={setCartProducts}
         />
-        <Cart cart={cartProducts} />
+        <Cart cart={cartProducts} setCart={setCartProducts} />
       </Main>
     </Container>
   );

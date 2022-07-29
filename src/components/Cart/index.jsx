@@ -1,6 +1,24 @@
-import { EmptyCart, LoadedCart, ProductCart } from "./styles";
+import { useEffect, useState } from "react";
+import CartItem from "../CartItem";
+import { CartList, EmptyCart, LoadedCart, ProductCart } from "./styles";
 
-function Cart({ cart }) {
+function Cart({ cart, setCart }) {
+  const [total, setTotal] = useState(0);
+  const currency = total.toLocaleString("pt-br", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  useEffect(() => {
+    setTotal(
+      !cart.length
+        ? 0
+        : cart.reduce((acc, cur) =>
+            !acc.price ? acc + cur.price : acc.price + cur.price
+          )
+    );
+  }, [cart]);
+
   return (
     <ProductCart>
       <h1>Carrinho de compras</h1>
@@ -12,23 +30,16 @@ function Cart({ cart }) {
       ) : (
         <>
           <LoadedCart>
-            <ul>
-              <li>
-                <figure><img src="https://i.imgur.com/Vng6VzV.png" alt="" /></figure>
-                <section>
-                  <div>
-                    <h4>Milkshake Ovo Maltine</h4>
-                    <span>Remover</span>
-                  </div>
-                  <p>Sanduíches</p>
-                </section>
-              </li>
-              
-            </ul>
+            <CartList>
+              {cart &&
+                cart.map((item) => (
+                  <CartItem item={item} cart={setCart} setCart={setCart} />
+                ))}
+            </CartList>
             <section>
               <div>
                 <h6>Total</h6>
-                <span>R$0.00</span>
+                <span>{currency}</span>
               </div>
               <button>Remover todos</button>
             </section>

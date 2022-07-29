@@ -1,12 +1,8 @@
 import { SubmitButton } from "./styles";
 
-function Button({ children }) {
-  function handleSubmit() {
-
-  }
-  
+function Button({ children, handler }) {
   return (
-    <SubmitButton type="submit" onClick={handleSubmit}>
+    <SubmitButton type="submit" onClick={handler}>
       {children}
     </SubmitButton>
   );

@@ -55,78 +55,6 @@ export const LoadedCart = styled.section`
   height: 84%;
   padding: 0.5rem;
 
-  ul {
-    height: 10rem;
-    width: 100%;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    &::-webkit-scrollbar {
-      width: 7px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--color-grey-fade);
-      border-radius: 20px;
-    }
-
-    li {
-      display: flex;
-      height: 3rem;
-      min-height: 3rem;
-      justify-content: space-between;
-
-      figure {
-        height: 100%;
-        width: 3rem;
-        background-color: var(--color-grey-100);
-        border-radius: 4px;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      section {
-        border: none;
-        width: 80%;
-
-        h4 {
-          color: var(--color-black);
-          font-size: 0.9rem;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          width: 70%;
-        }
-
-        p {
-          font-size: 0.8rem;
-          color: var(--color-grey-300);
-        }
-
-        span {
-          font-size: 0.8rem;
-        }
-      }
-    }
-
-    @media (min-width: 769px) {
-      height: 12rem;
-
-      div {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-  }
-
   section {
     width: 100%;
     border-top: 1px solid var(--color-grey-100);
@@ -165,6 +93,37 @@ export const LoadedCart = styled.section`
         color: var(--color-grey-300);
         background-color: var(--color-grey-100);
       }
+    }
+  }
+`;
+
+export const CartList = styled.ul`
+  height: 10rem;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey-fade);
+    border-radius: 20px;
+  }
+
+  @media (min-width: 769px) {
+    height: 12rem;
+
+    div {
+      display: flex;
+      justify-content: space-between;
     }
   }
 `;
