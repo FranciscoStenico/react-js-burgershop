@@ -13,6 +13,8 @@ function Cart({ cart, setCart, total, setTotal }) {
   function handleCartCleaning() {
     setCart([]);
     setTotal(0);
+
+    cart.forEach(item => item.reset())
   }
 
   return (
