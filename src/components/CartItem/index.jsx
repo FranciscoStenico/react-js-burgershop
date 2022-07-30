@@ -1,22 +1,26 @@
-import { CartListItem } from "./styles";
+import { CartItemInfos, CartListItem } from "./styles";
 
-function CartItem({ item, cart, setCart }) {
+function CartItem({ item, cart, setCart, total, setTotal }) {
   function handleRemove() {
     setCart(cart.filter((product) => product.id !== item.id));
+    
+    setTotal(total - (item.price * item.quantity))
+    item.reset()
   }
 
   return (
     <CartListItem>
       <figure>
-        <img src="https://i.imgur.com/Vng6VzV.png" alt="" />
+        <img src={item.img} alt={item.name} />
       </figure>
-      <section>
+      <CartItemInfos>
         <div>
           <h4>{item.name}</h4>
-          <span onClick={handleRemove}>Remover</span>
+          <button onClick={handleRemove}>Remover</button>
         </div>
         <p>{item.category}</p>
-      </section>
+        <span>{item.quantity}</span>
+      </CartItemInfos>
     </CartListItem>
   );
 }

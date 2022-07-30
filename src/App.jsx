@@ -11,6 +11,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [listRender, setListRender] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     api
@@ -32,12 +33,19 @@ function App() {
       </Header>
       <Main>
         <ProductList
-          state={products}
+          list={products}
           render={listRender}
           cart={cartProducts}
           setCart={setCartProducts}
+          total={totalPrice}
+          setTotal={setTotalPrice}
         />
-        <Cart cart={cartProducts} setCart={setCartProducts} />
+        <Cart
+          cart={cartProducts}
+          setCart={setCartProducts}
+          total={totalPrice}
+          setTotal={setTotalPrice}
+        />
       </Main>
     </Container>
   );

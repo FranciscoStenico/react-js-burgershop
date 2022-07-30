@@ -1,23 +1,19 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import CartItem from "../CartItem";
 import { CartList, EmptyCart, LoadedCart, ProductCart } from "./styles";
 
-function Cart({ cart, setCart }) {
-  const [total, setTotal] = useState(0);
-  const currency = total.toLocaleString("pt-br", {
-    style: "currency",
-    currency: "BRL",
-  });
+function Cart({ cart, setCart, total, setTotal }) {
+  function formatCurrency() {
+    return total.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
 
-  useEffect(() => {
-    setTotal(
-      !cart.length
-        ? 0
-        : cart.reduce((acc, cur) =>
-            !acc.price ? acc + cur.price : acc.price + cur.price
-          )
-    );
-  }, [cart]);
+  function handleCartCleaning() {
+    setCart([]);
+    setTotal(0);
+  }
 
   return (
     <ProductCart>
@@ -33,15 +29,22 @@ function Cart({ cart, setCart }) {
             <CartList>
               {cart &&
                 cart.map((item) => (
-                  <CartItem item={item} cart={setCart} setCart={setCart} />
+                  <CartItem
+                    key={item.id}
+                    item={item}
+                    cart={cart}
+                    setCart={setCart}
+                    total={total}
+                    setTotal={setTotal}
+                  />
                 ))}
             </CartList>
-            <section>
+            <section className="cart-details">
               <div>
                 <h6>Total</h6>
-                <span>{currency}</span>
+                <span>{formatCurrency()}</span>
               </div>
-              <button>Remover todos</button>
+              <button onClick={handleCartCleaning}>Remover todos</button>
             </section>
           </LoadedCart>
         </>

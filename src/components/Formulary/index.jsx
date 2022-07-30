@@ -12,9 +12,9 @@ function Formulary({ list, setRender }) {
     const newRender = list.filter((item) => {
       const testName = rgx.test(item.name);
       const testCategory = rgx.test(item.category);
-      const testPrice = rgx.test(item.price)
+      const testPrice = rgx.test(item.price);
 
-      return testName || testCategory || testPrice
+      return testName || testCategory || testPrice;
     });
 
     setRender(newRender);

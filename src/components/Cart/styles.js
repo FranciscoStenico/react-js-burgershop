@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ProductCart = styled.div`
   margin-top: 0.5rem;
-  background-color: var(--color-whitesmoke);
   height: 48%;
   width: 96%;
   max-width: 20rem;
@@ -35,6 +34,7 @@ export const EmptyCart = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--color-whitesmoke);
   align-items: center;
   height: 84%;
   border: 2px solid var(--color-grey-100);
@@ -55,7 +55,7 @@ export const LoadedCart = styled.section`
   height: 84%;
   padding: 0.5rem;
 
-  section {
+  .cart-details {
     width: 100%;
     border-top: 1px solid var(--color-grey-100);
 

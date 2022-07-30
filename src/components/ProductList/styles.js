@@ -7,7 +7,6 @@ export const List = styled.ul`
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0 0.7rem;
   overflow-x: scroll;
 
   &::-webkit-scrollbar {

@@ -1,9 +1,36 @@
+import { useState } from "react";
 import Button from "../Button";
 import { ProductCard, CardInfos } from "./styles";
 
-function Product({ render, cart, setCart }) {
+function Product({ render, cart, setCart, total, setTotal }) {
+  const [count, setCount] = useState(1);
+
   function handleAdd() {
-    setCart([...cart, render])
+    setCount(count + 1);
+
+    const cartItem = {
+      id: render.id,
+      name: render.name,
+      category: render.category,
+      price: render.price,
+      img: render.img,
+      quantity: count,
+      reset: resetCount,
+    };
+
+    if (cart.some(({ id }) => id === render.id)) {
+      setCart([
+        ...cart.map((item) => (item.id === render.id ? cartItem : item)),
+      ]);
+    } else {
+      setCart([...cart, cartItem]);
+    }
+
+    setTotal(total + cartItem.price);
+  }
+
+  function resetCount() {
+    setCount(1)
   }
 
   const currency = render.price.toLocaleString("pt-br", {
@@ -14,7 +41,7 @@ function Product({ render, cart, setCart }) {
   return (
     <ProductCard>
       <figure>
-        <img src={render.img} alt="" />
+        <img src={render.img} alt={render.name} />
       </figure>
       <CardInfos>
         <h3>{render.name}</h3>
